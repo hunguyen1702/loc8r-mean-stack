@@ -1,7 +1,7 @@
-const index = (req, res) => {
+const about = (req, res) => {
   res.render('index', {title: 'Express'});
 };
 
 module.exports = {
-  index
+  about
 };
