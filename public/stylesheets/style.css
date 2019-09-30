@@ -32,7 +32,7 @@ legend {
 }
 
 .card {
-  background-color: #469ea8;
+  background-color: #fff;
   padding: 1rem;
 }
 
@@ -49,7 +49,8 @@ legend {
 }
 
 .review-header {
-  background-color: #31727a;
+  background-color: #ff6f28;
+  color: #fff;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   margin-bottom: 0.5em;
@@ -62,12 +63,12 @@ legend {
 }
 
 .badge-default, .btn-primary {
-  background-color: #ad1d28;
-  border-color: #911821;
+  background-color: #fff;
+  border: solid 1px #ff6f28;
 }
 
 h4 a, h4 a:hover {
-  color: #fff;
+  color: #ff6f28;
 }
 
 h4 small {
@@ -104,4 +105,16 @@ body {
   font-family: "Cabin", Arial, sans-serif;
   color: #ff6f28;
   background-color: #fff;
+}
+
+.btn-primary {
+  background-color: #ff6f28;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #fff;
+  color: #ff6f28;
+  border: solid 1px #ff6f28;
 }

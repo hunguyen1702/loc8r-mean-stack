@@ -1,13 +1,13 @@
 const homeList = (req, res) => {
-  res.render('index', {title: 'Home'});
+  res.render('location-lists', {title: 'Home'});
 };
 
 const locationInfo = (req, res) => {
-  res.render('index', {title: 'Location info'});
+  res.render('location-info', {title: 'Location info'});
 };
 
 const addReview = (req, res) => {
-  res.render('index', {title: 'Add review'});
+  res.render('location-review-form', {title: 'Add review'});
 };
 
 module.exports = {
