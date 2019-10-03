@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://localhost/Loc8r';
+let dbURI = 'mongodb://localhost/Loc8r';
+if (process.env.NODE_ENV === 'production') {
+  dbURI = 'mongodb+srv://hunguyen:gintequila@hunguyen-mongodb-hklv4.mongodb.net/Loc8r';
+}
 
 mongoose.connect(dbURI, {useNewUrlParser: true});
 
