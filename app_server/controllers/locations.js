@@ -1,29 +1,25 @@
+const request = require('request');
+const apiOptions = {
+  server: 'http://localhost:3000'
+};
+if (process.env.NODE_ENV === 'production') {
+  apiOptions.server = 'https://boiling-river-05656.herokuapp.com';
+}
+
 const homeList = (req, res) => {
-  res.render('location-lists', {
-    title: 'Loc8r - find a place to work with wifi',
-    pageHeader: {
-      title: 'Loc8r',
-      strapline: 'Find places to work with wifi near you!'
-    },
-    locations: [{
-      name: 'Starcups',
-      address: '125 High Street, Reading, RG6 1PS',
-      rating: 3,
-      facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-      distance: '100m'
-      }, {
-      name: 'Cafe Hero',
-      address: '125 High Street, Reading, RG6 1PS',
-      rating: 4,
-      facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-      distance: '200m'
-      }, {
-      name: 'Burger Queen',
-      address: '125 High Street, Reading, RG6 1PS',
-      rating: 2,
-      facilities: ['Food', 'Premium wifi'],
-      distance: '250m'
-    }]
+  const path = '/api/locations';
+  const requestOptions = {
+    url: `${apiOptions.server}${path}`,
+    method: 'GET',
+    json: {},
+    qs: {
+      lng: -0.9692884,
+      lat: 51.455262,
+      distance: 100
+    }
+  };
+  request(requestOptions, (err, response, body) => {
+    renderHomePage(res, res, body);
   });
 };
 
@@ -74,6 +70,20 @@ const addReview = (req, res) => {
   res.render('location-review-form', {
     title: 'Review Starcups on Loc8r',
     pageHeader: {title: 'Review Starcups'}
+  });
+};
+
+const renderHomePage = (req, res, responseBody) => {
+  console.log(responseBody);
+  res.render('location-lists', {
+    title: 'Loc8r - find a place to work with wifi',
+    pageHeader: {
+      title: 'Loc8r',
+      strapline: 'Find places to work with wifi near you!'
+    },
+    locations: responseBody,
+    sidebar: 'Looking for wifi and a seat? Loc8r helps you find places to work when out and about. ' +
+      'Perhaps with coffee, cake or a pint? Let Loc8r help you find the place you\'re looking for.'
   });
 };
 
